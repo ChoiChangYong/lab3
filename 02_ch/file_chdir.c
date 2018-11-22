@@ -1,38 +1,33 @@
-/* 
- * 7장 파일 처리 
- * 파일 이름: file_chdir.c 
-*/ 
-
 #include <stdio.h> 
-#include <unistd.h> 
+#include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
 
-#define MAX_BUF 256 
+#define MAX_BUF 256
 
-main(int argc, char *argv[]) { 
-	char buf[MAX_BUF]; 
+main(int argc, char *argv[]) {
+	char buf[MAX_BUF];
 	if (argc < 2) {
-		fprintf(stderr, "Usage: file_chdir dirname\n"); 
-		exit(1); 
+		fprintf(stderr, "Usage: file_chdir dirname\n");
+		exit(1);
 	}
 
-	memset(buf, 0, MAX_BUF); 
-	if (getcwd(buf, MAX_BUF) < 0) { 
-		perror("getcwd"); 
-		exit(1); 
-	} 
-	printf("working directory (before) = %s\n", buf); 
+	memset(buf, 0, MAX_BUF);
+	if (getcwd(buf, MAX_BUF) < 0) {
+		perror("getcwd");
+		exit(1);
+	}
+	printf("working directory (before) = %s\n", buf);
 
-	if (chdir(argv[1]) < 0) { 
-		perror("chdir"); 
-		exit(1); 
-	} 
+	if (chdir(argv[1]) < 0) {
+		perror("chdir");
+		exit(1);
+	}
 
-	memset(buf, 0, MAX_BUF); 
-	if (getcwd(buf, MAX_BUF) < 0) { 
-		perror("getcwd"); 
-		exit(1); 
-	} 
-	printf("working directory (after ) = %s\n", buf); 
-} 
+	memset(buf, 0, MAX_BUF);
+	if (getcwd(buf, MAX_BUF) < 0) {
+		perror("getcwd");
+		exit(1);
+	}
+	printf("working directory (after ) = %s\n", buf);
+}
